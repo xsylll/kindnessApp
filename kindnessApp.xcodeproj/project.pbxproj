@@ -12,6 +12,9 @@
 		0B31982C2A8BE8A200024688 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B31982B2A8BE8A200024688 /* Assets.xcassets */; };
 		0B31982F2A8BE8A200024688 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B31982E2A8BE8A200024688 /* Preview Assets.xcassets */; };
 		B725929D2A8E8CA200CA8150 /* SwiftUI View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B725929C2A8E8CA200CA8150 /* SwiftUI View.swift */; };
+		F1E843402A8EC77100161947 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E8433F2A8EC77100161947 /* HomePage.swift */; };
+		F1E843422A8EC7AB00161947 /* loginSignup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E843412A8EC7AB00161947 /* loginSignup.swift */; };
+		F1E843452A8EC85B00161947 /* Key_IterationTwo_ToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1E843432A8EC85B00161947 /* Key_IterationTwo_ToDoList.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +24,9 @@
 		0B31982B2A8BE8A200024688 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B31982E2A8BE8A200024688 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B725929C2A8E8CA200CA8150 /* SwiftUI View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI View.swift"; sourceTree = "<group>"; };
+		F1E8433F2A8EC77100161947 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		F1E843412A8EC7AB00161947 /* loginSignup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginSignup.swift; sourceTree = "<group>"; };
+		F1E843442A8EC85B00161947 /* Key_IterationTwo_ToDoList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Key_IterationTwo_ToDoList.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +61,9 @@
 			children = (
 				0B3198272A8BE8A100024688 /* kindnessAppApp.swift */,
 				0B3198292A8BE8A100024688 /* ContentView.swift */,
+				F1E8433F2A8EC77100161947 /* HomePage.swift */,
+				F1E843412A8EC7AB00161947 /* loginSignup.swift */,
+				F1E843432A8EC85B00161947 /* Key_IterationTwo_ToDoList.xcdatamodeld */,
 				B725929C2A8E8CA200CA8150 /* SwiftUI View.swift */,
 				0B31982B2A8BE8A200024688 /* Assets.xcassets */,
 				0B31982D2A8BE8A200024688 /* Preview Content */,
@@ -140,9 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1E843452A8EC85B00161947 /* Key_IterationTwo_ToDoList.xcdatamodeld in Sources */,
 				0B31982A2A8BE8A100024688 /* ContentView.swift in Sources */,
+				F1E843422A8EC7AB00161947 /* loginSignup.swift in Sources */,
 				0B3198282A8BE8A100024688 /* kindnessAppApp.swift in Sources */,
 				B725929D2A8E8CA200CA8150 /* SwiftUI View.swift in Sources */,
+				F1E843402A8EC77100161947 /* HomePage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +353,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F1E843432A8EC85B00161947 /* Key_IterationTwo_ToDoList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F1E843442A8EC85B00161947 /* Key_IterationTwo_ToDoList.xcdatamodel */,
+			);
+			currentVersion = F1E843442A8EC85B00161947 /* Key_IterationTwo_ToDoList.xcdatamodel */;
+			path = Key_IterationTwo_ToDoList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0B31981C2A8BE8A100024688 /* Project object */;
 }
