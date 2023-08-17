@@ -6,51 +6,71 @@
 //
 
 import SwiftUI
-struct Pie: Shape {
-    var startAngle : Angle
-    var endAngle : Angle
-    func path(in rect: CGRect) -> Path {
-        let center = CGPoint(x: rect.midX, y: rect.midY)
-        let radius = min(rect.width, rect.height) / 2
-        let start = CGPoint(
-            x: center.x + radius * cos(CGFloat(startAngle.radians)),
-            y: center.y + radius * sin(CGFloat(startAngle.radians))
-        )
-        var path = Path()
-        path.move(to: center)
-        path.addLine(to: start)
-        path.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
-        return path
-    }
-}
+
 struct ContentView: View {
-    let colors: [Color] = [.blue, .red, .purple, .orange, .blue, .red, .purple, .orange, .blue, .red, .purple, .orange, .blue, .red, .purple, .orange, .blue, .red, .purple, .orange]
-    @State var spin :Double = 0
-    @State var count = 20
+    
+    @State var rotation: CGFloat = 0.0
+    
     var body: some View {
         VStack {
             Text("Welcome Back!")
                 .font(.largeTitle)
-                .fontWeight(.bold)
-            ZStack{
-                ForEach(0..<count, id: \.self) { index in Pie(startAngle:
-                        .degrees(Double(index) / Double(count) * 360), endAngle:
-                        .degrees(Double(index + 1) / Double(count) * 360))
-                        .fill(colors[index % colors.count])
-                }
-            }
-            .rotationEffect(.degrees(spin))
-            
-            // Spacer()
-            Button {
-                withAnimation(.spring(response: 12, dampingFraction: 2.5)) {
-                    spin += 2160
-                }
-            } label: {
-                Text("Spin")
-                    .font(.largeTitle)
+            Wheel(rotation: $rotation)
+                .frame(width: 350, height: 700)
+                .rotationEffect(.radians(rotation))
+                .animation(.easeInOut(duration: 1.5), value: rotation)
+            Button("Spin") {
+                let randomAmount = Double(Int.random(in: 7..<15))
+                rotation += randomAmount
             }
         }
+    }
+}
+
+
+struct Wheel: View {
+    
+    @Binding var rotation: CGFloat
+    
+    let segments = ["Invite someone over", "Avoid gossiping", "Start a good habit", "Forgive someone", "Plant a tree", "Be extra kind", "Hold the door open","Help a friend","Don’t complain"]
+    
+    var body: some View {
+        GeometryReader { proxy in
+            ZStack {
+                ForEach(segments.indices, id: \.self) { index in
+                    ZStack {
+                        Circle()
+                            .inset(by: proxy.size.width / 5)
+                            .trim(from: CGFloat(index) * segmentSize, to: CGFloat(index + 1) * segmentSize)
+                            .stroke(Color.all[index], style: StrokeStyle(lineWidth: proxy.size.width / 2))
+                            .rotationEffect(.radians(.pi * segmentSize))
+                            .opacity(0.3)
+                        label(text: segments[index], index: CGFloat(index), offset: proxy.size.width / 3)
+                    }
+                }
+            }
+        }
+    }
+    
+    var segmentSize: CGFloat {
+        1 / CGFloat(segments.count)
+    }
+    
+    func rotation(index: CGFloat) -> CGFloat {
+        (.pi * (2 * segmentSize * (CGFloat(index + 1))))
+    }
+    
+    func label(text: String, index: CGFloat, offset: CGFloat) -> some View {
+        Text(text)
+            .rotationEffect(.radians(rotation(index: CGFloat(index))))
+            .offset(x: cos(rotation(index: index)) * offset, y: sin(rotation(index: index)) * offset)
+    }
+}
+
+extension Color {
+    
+    static var all: [Color] {
+        [Color.yellow, .green, .pink, .cyan, .mint, .orange, .teal, .indigo, .green, .pink, .cyan, .mint, .orange, .teal, .indigo, .green, .pink, .cyan, .mint, .orange, .teal, .indigo]
     }
 }
 
