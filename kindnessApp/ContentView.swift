@@ -12,16 +12,35 @@ struct ContentView: View {
     @State var rotation: CGFloat = 0.0
     
     var body: some View {
-        VStack {
-            Text("Welcome Back!")
-                .font(.largeTitle)
-            Wheel(rotation: $rotation)
-                .frame(width: 350, height: 700)
-                .rotationEffect(.radians(rotation))
-                .animation(.easeInOut(duration: 1.5), value: rotation)
-            Button("Spin") {
-                let randomAmount = Double(Int.random(in: 7..<15))
-                rotation += randomAmount
+        NavigationStack {
+            ZStack {
+                Text("Welcome Back!")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .offset(y: -300)
+                Image("arrow")
+                    .resizable()
+                    .frame(width: 40, height: 100)
+                    .offset(y: -150)
+                Wheel(rotation: $rotation)
+                    .frame(width: 350, height: 700)
+                    .rotationEffect(.radians(rotation))
+                    .animation(.easeInOut(duration: 1.5), value: rotation)
+                    .offset(y: 75)
+                Button("Spin") {
+                    let randomAmount = Double(Int.random(in: 7..<15))
+                    rotation += randomAmount
+                }
+                .font(.title)
+                .offset(y: 350)
+            }
+            NavigationLink {
+                SwiftUIView()
+            } label: {
+                Image("leaderboard")
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .offset(x: -140)
             }
         }
     }
@@ -32,7 +51,7 @@ struct Wheel: View {
     
     @Binding var rotation: CGFloat
     
-    let segments = ["Invite someone over", "Avoid gossiping", "Start a good habit", "Forgive someone", "Plant a tree", "Be extra kind", "Hold the door open","Help a friend","Don’t complain"]
+    let segments = ["Invite someone over", "Avoid gossiping", "Start a good habit", "Forgive someone", "Plant a tree", "Be extra kind", "Hold the door open","Help a friend","Give a compliment"]
     
     var body: some View {
         GeometryReader { proxy in
@@ -70,7 +89,7 @@ struct Wheel: View {
 extension Color {
     
     static var all: [Color] {
-        [Color.yellow, .green, .pink, .cyan, .mint, .orange, .teal, .indigo, .green, .pink, .cyan, .mint, .orange, .teal, .indigo, .green, .pink, .cyan, .mint, .orange, .teal, .indigo]
+        [Color.yellow, .green, .pink, .cyan, .mint, .orange, .teal, .indigo, .pink, .cyan, .mint, .orange, .teal, .indigo, .green, .pink, .cyan, .mint, .orange, .teal, .indigo]
     }
 }
 
