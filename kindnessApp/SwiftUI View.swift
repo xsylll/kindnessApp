@@ -39,7 +39,7 @@ struct SwiftUIView: View {
                     }.padding()
                     
                     HStack {
-                        Text("1")
+                        Text("2")
                         Spacer()
                         Text("Kayla")
                         Spacer()
