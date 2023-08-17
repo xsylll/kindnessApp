@@ -34,13 +34,12 @@ struct ContentView: View {
                 .font(.title)
                 .offset(y: 350)
             }
-            NavigationLink {
-                SwiftUIView()
-            } label: {
-                Image("leaderboard")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                    .offset(x: -140)
+            .toolbar {
+                NavigationLink(destination: SwiftUIView(), label: {
+                    Image("leaderboard")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                })
             }
         }
     }
